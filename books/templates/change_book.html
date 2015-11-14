@@ -1,0 +1,26 @@
+{%extends "base.html"%}
+{%block title%}书籍资料修改{%endblock%}
+{%block content%}
+<h1>{{Title}}</h1>
+<hr>
+<form method="POST">
+{% csrf_token %}
+<ul>
+{{form.ISBN.errors}}
+<li>ISBN:{{form.ISBN}}</li>
+{{form.Title.errors}}
+<li>标题:{{form.Title}}</li>
+{{form.AuthorID.errors}}
+<li>作者ID:{{form.AuthorID}}<button name="addauthor" value="True">添加</button></li>
+{{form.Price.errors}}
+<li>价格:{{form.Price}}</li>
+{{form.Publisher.errors}}
+<li>出版商:{{form.Publisher}}</li>
+{{form.PublishDate.errors}}
+<li>出版日期:{{form.PublishDate}}</li>
+</ul>
+<input type="submit" value="保存"/>
+<input type="reset" value="重置">
+</form>
+<a href="../../../index/">返回主页</a>
+{%endblock%}

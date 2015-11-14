@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" /> 
+<title>{% block title%}首页{% endblock %}</title>
+<style type="text/css">
+a{
+  text-decoration:None;
+}
+#banner{
+text-align:center;
+}
+#author_div,#book_div{
+margin-left:20%;
+}
+
+</style>
+</head> 
+<body>
+<div id="banner"><h1>欢迎使用书籍查询系统！</h1>
+<hr></div>
+<div id="content">
+{% block content %}	
+{% endblock %}
+</div>
+<div id="footer">
+<hr>
+<p>欢迎访问</p>
+</div>
+</body> 
+</html> 

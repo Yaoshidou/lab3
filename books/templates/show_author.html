@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{%block title%}作者资料{%endblock%}
+{%block content%}
+<h1>{{author.Name}}</h1>
+<ul>
+<li>作者ID:{{author.AuthorID}}</li>
+<li>姓名:{{author.Name}}</li>
+<li>书籍:
+{% for book in booklist %}
+<a href="../../books/{{book.ISBN}}/">{{book.Title}}</a>
+{% endfor %}
+</li>
+<li>年龄:{{author.Age}}</li>
+<li>国家:{{author.Country}}</li>
+</ul>
+<a href="../change/{{author.AuthorID}}/">修改信息</a>
+<a href="../../index">返回主页</a>
+{%endblock%}

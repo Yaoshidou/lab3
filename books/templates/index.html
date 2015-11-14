@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{%block title %}主页{% endblock %}
+{%block content %}
+<div id="book_div">
+<h1>书籍列表</h1>
+<form method="POST">
+{% csrf_token %}
+查找方式 <select name="method"> 
+<option value="author_name">作者</option> 
+<option value="isbn">ISBN</option>
+<option value="title">书名</option>
+</select>  查找内容 <input type="text" name="content" />
+<button name="search" value="True">搜索</button>
+    <button name="addbook" value="book">添加书籍</button><br/>
+<table border>
+<tr><th>ISBN</th><th>标题</th><th>作者ID</th><th>出版商</th><th>出版日期</th><th>价格</th><th>操作</th></tr>
+{%if books %}
+{%for book in books%}
+<tr><th>{{book.ISBN}}</th>
+<th><a href="../books/{{book.ISBN}}">{{book.Title}}</a></th>
+<th><a href="../authors/{{book.AuthorID.AuthorID}}">{{book.AuthorID.Name}}</a></th>
+<th>{{book.Publisher}}</th><th>{{book.PublishDate}}</th>
+<th>{{book.Price}}</th>
+<th><button name="delete" value="{{book.ISBN}}">删除</button></th>
+</tr>
+{%endfor%}
+{% endif %}
+</table>
+</div>
+<div id="author_div">
+<h1>作者列表</h1>
+  <button name="addauthor" value="author">添加作者</button><br/>
+<table border>
+<tr><th>作者ID</th><th>姓名</th><th>年龄</th><th>国家</th><th>著作</th></tr>
+{%for dic in authors%}
+<tr><th>{{dic.author.AuthorID}}</th>
+<th><a href="../authors/{{dic.author.AuthorID}}">{{dic.author.Name}}</th>
+<th>{{dic.author.Age}}</th>
+<th>{{dic.author.Country}}</th>
+<th>
+{% if dic.booklist %}
+  {% for book in dic.booklist %}
+  <a href="../books/{{book.ISBN}}/">{{book.Title}}</a>
+  {% endfor %}
+{% else %}
+没有书籍
+{%endif%}
+</th>
+</tr>
+{%endfor%}
+</table>
+</form>
+</div>
+{% endblock %}

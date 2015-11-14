@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+{%block title%}作者资料修改{%endblock%}
+{%block content%}
+<h1>{{Name}}</h1>
+<hr>
+<form method="POST">
+{% csrf_token %}
+<ul>
+{{form.AuthorID.errors}}
+<li>作者ID: {{form.AuthorID}}</li>
+{{form.Name.errors}}
+<li>姓名: {{form.Name}}</li>
+{{form.Age.errors}}
+<li>年龄: {{form.Age}}</li>
+{{form.Country.errors}}
+<li>国家: {{form.Country}}</li>
+</ul>
+<input type="submit" value="保存"/>
+<input type="reset" value="重置">
+</form>
+<a href="../../../index/">返回主页</a>
+{%endblock%}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{%block title%}书籍资料{%endblock%}
+{%block content%}
+<h1>{{book.Title}}</h1>
+<ul>
+<li>ISBN编号:{{book.ISBN}}</li>
+<li>标题:{{book.Title}}</li>
+<li>作者:<a href="../../authors/{{book.AuthorID.AuthorID}}">{{book.AuthorID.Name}}</a></li>
+<li>价格:{{book.Price}}</li>
+<li>出版商:{{book.Publisher}}</li>
+<li>出版日期:{{book.PublishDate}}</li>
+</ul>
+<ul>
+<li>作者ID:{{author.AuthorID}}</li>
+<li>姓名:<a href="../../authors/{{author.AuthorID}}/">{{author.Name}}</a></li>
+<li>书籍:
+{% for book in booklist %}
+<a href="../{{book.ISBN}}/">{{book.Title}}</a>
+{% endfor %}
+</li>
+<li>年龄:{{author.Age}}</li>
+<li>国家:{{author.Country}}</li>
+</ul>
+<a href="../change/{{book.ISBN}}/">修改书籍</a>
+<a href="../../authors/change/{{author.AuthorID}}/">修改作者</a>
+<a href="../../index/">返回主页</a>
+{%endblock%}

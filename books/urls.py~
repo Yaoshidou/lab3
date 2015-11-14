@@ -1,0 +1,11 @@
+from django.conf.urls import url
+from django.contrib import admin
+from views import CreateBook, CreateAuthor, IndexShow, ShowBook, ShowAuthor
+urlpatterns = [
+    url(r'^create_book/$', CreateBook),
+    url(r'^create_author/$', CreateAuthor),
+    url(r'^index/$', IndexShow),
+    url(r'^books/(.+)/$', ShowBook),
+    url(r'^authors/(.+)/$', ShowAuthor),
+    url(r'^admin/', include(admin.site.urls)),
+]
