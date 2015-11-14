@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #coding:utf-8
+=======
+#-*-coding:utf-8-*-
+>>>>>>> C4
 from django.conf.urls import url, include
 from django.contrib import admin
 from views import *
