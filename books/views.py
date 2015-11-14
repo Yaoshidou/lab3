@@ -38,6 +38,7 @@ def IndexShow(request):
     for author in Author.objects.all():
         authors.append({"author":author,"booklist":author.books.all()})
     return render(request, 'index.html', {'books':book_set, 'authors':authors})
+#this for create book
 def CreateBook(request):
     if request.method == 'POST':
         if "addauthor" in request.POST:
