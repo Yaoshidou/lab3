@@ -1,3 +1,5 @@
+#-×-coding:utf-8-*-
+#表单定义文件
 from django import forms
 from django.forms import ModelForm
 from models import Book, Author
